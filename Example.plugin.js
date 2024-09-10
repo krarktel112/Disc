@@ -5,6 +5,7 @@
  * @version 0.0.1
  */
 
+BdApi.Plugins.getAll();
 module.exports = meta => {
 
   return {
