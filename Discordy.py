@@ -7,7 +7,6 @@ class DiscordClient(discord.Client):
     def __init__(self, *args, **kwargs):
         discord.Client.__init__(self, **kwargs)
 
-    @asyncio.coroutine
     def on_ready(self):
         servers = list(self.servers)
         for server in servers:
