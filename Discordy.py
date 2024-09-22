@@ -9,8 +9,7 @@ class DiscordClient(discord.Client):
     def __init__(self, *args, **kwargs):
         discord.Client.__init__(self, intents=discord.Intents.default())
 
-    @asyncio
-    def on_ready(self):
+    @asyncio def on_ready(self):
         servers = list(self.servers)
         for server in servers:
             if server.name == 'My server':
