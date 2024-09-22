@@ -1,32 +1,26 @@
-import discord
 import asyncio
 import datetime
 
 
+# This example requires the 'message_content' intent.
+
+import discord
+
 intents = discord.Intents.default()
 intents.message_content = True
-class DiscordClient(discord.Client):
-    def __init__(self):
-        discord.Client.__init__(self, intents=discord.Intents.default())
-    
-    def on_ready(self):
-        servers = list(self.servers)
-        for server in servers:
-            if server.name == 'My server':
-                break
 
-        for channel in server.channels:
-            if channel.name == 'general':
-                break
+client = discord.Client(intents=intents)
 
-        now = datetime.datetime.now()
-        yield from self.send_message(channel, 'Api Success! at ' + str(now))
-        print('Success!')
-        yield from self.close()
+@client.event
+async def on_ready():
+    print(f'We have logged in as {client.user}')
 
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-if __name__ == '__main__':
-    dc = DiscordClient()
-    email = input('email : ')
-    password = input('password : ')
-    dc.login(email, password)
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
+
+client.run('your token here')
