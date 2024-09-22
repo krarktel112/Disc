@@ -6,21 +6,6 @@ import datetime
 class DiscordClient(discord.Client):
     def __init__(self):
         discord.Client.__init__(self, intents=discord.Intents.default())
-
-    @asyncio.wait
-    await asyncio login
-    def on_ready(self):
-        servers = list(self.servers)
-        for server in servers:
-            if server.name == 'My server':
-                break
-
-        for channel in server.channels:
-            if channel.name == 'general':
-                break
-
-        now = datetime.datetime.now()
-        yield from self.send_message(channel, 'Api Success! at ' + str(now))
         print('Success!')
         yield from self.close()
 
