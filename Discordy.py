@@ -6,7 +6,7 @@ import datetime
 intents = discord.Intents.default()
 intents.message_content = True
 class DiscordClient(discord.Client):
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         discord.Client.__init__(self, intents=discord.Intents.default())
     
     def on_ready(self):
