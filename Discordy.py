@@ -8,8 +8,7 @@ intents.message_content = True
 class DiscordClient(discord.Client):
     def __init__(self, *args, **kwargs):
         discord.Client.__init__(self, intents=discord.Intents.default())
-
-    @asyncio.wait:
+    
     def on_ready(self):
         servers = list(self.servers)
         for server in servers:
