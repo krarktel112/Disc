@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import requests 
 
 
 # This example requires the 'message_content' intent.
