@@ -24,4 +24,4 @@ async def on_message(message):
         await message.channel.send('Hello!')
 
 x = input("Token:")
-client.run('MTI0Mjk1NDU5MTY4ODIwMDI4Mg.Gxk_yG.Pq3HX4fHayQmf7mj1bZfHzeRGta8Dh1XWBYCXY')
+client.run(x)
