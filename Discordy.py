@@ -1,28 +1,23 @@
-import asyncio
-import datetime
-import requests 
+const Discord = require('discord.js');
+const client = new Discord.Client({
+  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_PRESENCES'],});
 
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);});
 
-# This example requires the 'message_content' intent.
+client.on('presenceUpdate', (oldPresence, newPresence) => {
+  // if someone else has updated their status, just return
+  if (newPresence.userId !== 'person_id') return;
+  // if it's not the status that has changed, just return
+  if (oldPresence.status === newPresence.status) return;
+  // of if the new status is not online, again, just return
+  if (newPresence.status !== 'online') return;
 
-import discord
+  try {
+    client.channels.cache.get('channel_id').send('HELLO');
+  } catch (error) {
+    console.log(error);
+  }
+});
 
-intents = discord.Intents.default()
-intents.message_content = True
-
-client = discord.Client(intents=intents)
-
-@client.event
-async def on_ready():
-    print(f'We have logged in as {client.user}')
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
-
-x = input("Token:")
-client.run(x)
+client.login('***');
