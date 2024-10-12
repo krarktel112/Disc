@@ -949,6 +949,18 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
+											fs.readFile('data.json', 'utf-8', (err, data) => {
+												if (err) {
+													console.error(err);
+												return;
+												}
+											try {
+												const jsonData = JSON.parse(data);
+												console.log(jsonData);
+											} catch (parseError) {
+												console.error('Error parsing JSON:', parseError);
+											}
+											});
 										}
 									}
 								});
