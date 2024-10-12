@@ -949,21 +949,19 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
-											fs.readFile('data.json', 'utf-8', (err, data) => {
+											const fs = require('fs');
+											const jsonData = {
+												name: 'John',
+												age: 30
+											};
+											const jsonString = JSON.stringify(jsonData);
+											fs.writeFile('data.json', jsonString, 'utf-8', (err) => {
 												if (err) {
 													console.error(err);
-												return;
+													return;
 												}
-											try {
-												const jsonData = JSON.parse(data);
-												console.log(jsonData);
-											} catch (parseError) {
-												console.error('Error parsing JSON:', parseError);
-											}
+												console.log('JSON data written to file');
 											});
-										}
-									}
-								});
 							}
 						}
 						userStatusStore[id] = status;
