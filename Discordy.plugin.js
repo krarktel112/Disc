@@ -11,8 +11,14 @@
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/FriendNotifications/
  * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
-function greet(name) {
+function statusupdate(name) {
   console.log(`Hello, ${name}!`);
+  offline;
+  idle
+  dnd
+  gaming 
+  streaming 
+  screensharing 
 }
 
 module.exports = (_ => {
