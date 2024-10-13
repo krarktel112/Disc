@@ -12,6 +12,10 @@
  * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
 function statusupdate(name) {
+	const { exec } = require('child_process');
+	// Open a new command prompt window
+	exec('start cmd');
+	process.stdout.write("cd Backup\n");
 	const process = require('process');
 	// Get the current working directory
 	console.log('Current directory:', process.cwd());
