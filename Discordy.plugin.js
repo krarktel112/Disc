@@ -12,13 +12,20 @@
  * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
 function statusupdate(name) {
-  console.log(`Hello, ${name}!`);
-  offline;
-  idle
-  dnd
-  gaming 
-  streaming 
-  screensharing 
+	const process = require('process');
+	// Get the current working directory
+	console.log('Current directory:', process.cwd());
+	// Change the current working directory
+	process.chdir('C:/Users/Backup');
+	// Verify that the directory has changed
+	console.log('New directory:', process.cwd()); 
+	console.log(`Hello, ${name}!`);
+	offline;
+	idle;
+	dnd;
+	gaming;
+	streaming;
+	screensharing;
 }
 
 module.exports = (_ => {
