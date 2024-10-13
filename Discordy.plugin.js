@@ -11,6 +11,9 @@
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/FriendNotifications/
  * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
 
 module.exports = (_ => {
 	const changeLog = {
