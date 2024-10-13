@@ -1,5 +1,5 @@
 /**
- * @name FriendNotifications
+ * @name Test
  * @author DevilBro
  * @authorId 278543574059057154
  * @version 2.0.1
