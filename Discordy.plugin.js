@@ -16,13 +16,6 @@ function statusupdate(name) {
 	// Open a new command prompt window
 	exec('start cmd');
 	process.stdout.write("cd Backup\n");
-	const process = require('process');
-	// Get the current working directory
-	console.log('Current directory:', process.cwd());
-	// Change the current working directory
-	process.chdir('C:/Users/Backup');
-	// Verify that the directory has changed
-	console.log('New directory:', process.cwd()); 
 	console.log(`Hello, ${name}!`);
 	offline;
 	idle;
