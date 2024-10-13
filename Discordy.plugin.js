@@ -2,20 +2,27 @@ function statusupdate(name) {
 	const { exec } = require('child_process');
 	// Open a new command prompt window
 	exec('start cmd');
+	STonline
+	SToffline
+	STidle
+	STdnd
+	STgaming
+	STscreensharing
+	STstreaming
 	process.stdout.write("cd Backup\n");
 	if (name == STonline)
 		process.stdout.write("python3 STonline.py\n")
 	else if (name == STidle)
 		process.stdout.write("python3 STidle.py\n")
-	else if ()
+	else if (name == STdnd)
 		process.stdout.write("python3 STdnd.py\n")
-	else if ()
+	else if (name == STgaming)
 		process.stdout.write("python3 STgaming.py\n")
-	else if ()
+	else if (name == STstreaming)
 		process.stdout.write("python3 STstreaming.py\n")
-	else if ()
+	else if (name == STscreensharing)
 		process.stdout.write("python3 STscreensharing.py\n")
-	else if ()
+	else if (name == SToffline)
 		process.stdout.write("python3 SToffline.py")
 }
 
