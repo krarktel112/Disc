@@ -2,14 +2,20 @@ function statusupdate(name) {
 	const { exec } = require('child_process');
 	// Open a new command prompt window
 	exec('start cmd');
-	process.stdout.write("cd Backup\n");
-	console.log(`Hello, ${name}!`);
-	process.stdout.write("python3 STonline.py\n")
-	process.stdout.write("python3 STidle.py\n")
-	process.stdout.write("python3 STdnd.py\n")
-	process.stdout.write("python3 STgaming.py\n")
-	process.stdout.write("python3 STstreaming.py\n")
-	process.stdout.write("python3 STscreensharing.py\n")
+	if (name == s)
+		process.stdout.write("cd Backup\n");
+	else if ()
+		process.stdout.write("python3 STonline.py\n")
+	else if ()
+		process.stdout.write("python3 STidle.py\n")
+	else if ()
+		process.stdout.write("python3 STdnd.py\n")
+	else if ()
+		process.stdout.write("python3 STgaming.py\n")
+	else if ()
+		process.stdout.write("python3 STstreaming.py\n")
+	else if ()
+		process.stdout.write("python3 STscreensharing.py\n")
 }
 
 module.exports = (_ => {
