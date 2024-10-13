@@ -949,19 +949,9 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
-											const fs = require('fs');
-											const jsonData = {
-												name: 'John',
-												age: 30
-											};
-											const jsonString = JSON.stringify(jsonData);
-											fs.writeFile('data.json', jsonString, 'utf-8', (err) => {
-												if (err) {
-													console.error(err);
-													return;
-												}
-												console.log('JSON data written to file');
-											});
+										}
+									}
+								});
 							}
 						}
 						userStatusStore[id] = status;
