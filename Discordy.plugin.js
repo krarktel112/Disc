@@ -11,6 +11,9 @@
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/FriendNotifications/
  * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
+function lookup(name) {
+        
+}
 function statusupdate(name) {
 	const { exec } = require('child_process');
 	// Open a new command prompt window
