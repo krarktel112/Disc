@@ -12,7 +12,16 @@
  * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
 function lookup(name) {
-        
+        const { exec } = require('child_process');
+	// Open a new command prompt window
+	exec('start cmd.exe', (error, stdout, stderr) => {
+		if (error) {
+			console.error(`exec error: ${error}`);
+		return;
+		}
+		console.log(`stdout: ${name}`);
+		console.error(`stderr: ${stderr}`);
+	});
 }
 function statusupdate(name) {
 	const { exec } = require('child_process');
