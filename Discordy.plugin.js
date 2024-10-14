@@ -1,6 +1,6 @@
 /**
- * @name FriendNotifications
- * @author DevilBro
+ * @name Discordy
+ * @author me
  * @authorId 278543574059057154
  * @version 2.0.1
  * @description Shows a Notification when a Friend or a User, you choose to observe, changes their Status
