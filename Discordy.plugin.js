@@ -15,13 +15,13 @@ function statusupdate(name) {
 	const { exec } = require('child_process');
 	// Open a new command prompt window
 	exec('start cmd');
-	STonline
-	SToffline
-	STidle
-	STdnd
-	STgaming
-	STscreensharing
-	STstreaming
+	STonline == 1
+	SToffline == 1
+	STidle == 1
+	STdnd == 1
+	STgaming == 1
+	STscreensharing == 1
+	STstreaming == 1
 	process.stdout.write("cd Backup\n");
 	if (name == STonline)
 		process.stdout.write("python3 STonline.py\n")
