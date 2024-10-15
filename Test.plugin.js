@@ -19,7 +19,7 @@ module.exports = class MyPlugin {
 	BDFDB.UserUtils.getStatus = function (id = BDFDB.UserUtils.me.id) {
 		id = typeof id == "number" ? id.toFixed() : id;
 		let activity = BDFDB.UserUtils.getActivity(id);
-			return activity && activity.type == Internal.DiscordConstants.ActivityTypes.STREAMING ? "streaming" : Internal.LibraryStores.PresenceStore.getStatus(id);
+		return activity && activity.type == Internal.DiscordConstants.ActivityTypes.STREAMING ? "streaming" : Internal.LibraryStores.PresenceStore.getStatus(id);
 	};
 	BDFDB.UserUtils.getStatusColor = function (status, useColor) {
 		if (!Internal.DiscordConstants.Colors || !Internal.DiscordConstants.ColorsCSS) return null;
