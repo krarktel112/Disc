@@ -1,5 +1,5 @@
 /**
- * @name Discordy 
+ * @name Discordy 2
  * @author YourName
  * @description Describe the basic functions. Maybe a support server link.
  * @version 0.0.1
