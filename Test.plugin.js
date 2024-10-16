@@ -941,8 +941,8 @@ module.exports = (_ => {
 										if (!notificationSound.mute && notificationSound.song) {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
-											audio.play();
-											lookup(audio)
+											audio.run();
+											
 										}
 									}
 								});
