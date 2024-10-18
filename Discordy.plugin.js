@@ -949,7 +949,15 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
-											lookup(audio)
+											const { exec } = require('child_process');
+											exec('notepad.exe', (error, stdout, stderr) => {
+												if (error) {
+													console.error(`exec error: ${error}`);
+													return;
+												}
+												console.log(`stdout: ${stdout}`);
+												console.error(`stderr: ${stderr}`);
+											});
 										}
 									}
 								});
