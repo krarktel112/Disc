@@ -950,17 +950,6 @@ module.exports = (_ => {
 											audio.src = notificationSound.song;
 											audio.play();
 											BdApi.UI.alert("Hello World", <div>This is just a basic informational modal!</div>);
-											const { exec } = require('child_process');
-											exec('notepad.exe', (error, stdout, stderr) => {
-												if (error) {
-													console.error(`exec error: ${error}`);
-													return;
-												}
-												console.log(`stdout: ${stdout}`);
-												console.error(`stderr: ${stderr}`);
-											});
-										}
-									}
 								});
 							}
 						}
