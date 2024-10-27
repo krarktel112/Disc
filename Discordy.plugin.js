@@ -936,7 +936,7 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
-											BdApi.UI.alert("Hello World", <div>This is just a basic informational modal!</div>);
+											BdApi.UI.alert("Hello World");
 										}
 									}
 								});
