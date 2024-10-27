@@ -2,14 +2,13 @@
  * @name Discordy
  * @author me
  * @authorId 278543574059057154
- * @version 2.0.1
+ * @version 2.0.3
  * @description Shows a Notification when a Friend or a User, you choose to observe, changes their Status
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
  * @patreon https://www.patreon.com/MircoWittrien
  * @website https://mwittrien.github.io/
  * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/FriendNotifications/
- * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Plugins/FriendNotifications/FriendNotifications.plugin.js
  */
 
 module.exports = (_ => {
@@ -318,9 +317,8 @@ module.exports = (_ => {
 					this.SettingsUpdated = true;
 					BDFDB.PluginUtils.refreshSettingsPanel(this, settingsPanel, collapseStates);
 				};
-				let successSavedAudio = (type, parsedUrl, parsedData) => {
-					if (parsedUrl && parsedData) BDFDB.NotificationUtils.toast(`Sound was saved successfully.`, {type: "success"});
-					this.settings.notificationSounds[type].url = parsedUrl;
+				let successSavedAudio = (type, parsedData) => {
+					if (parsedData) BDFDB.NotificationUtils.toast(`Sound was saved successfully.`, {type: "success"});
 					this.settings.notificationSounds[type].song = parsedData;
 					BDFDB.DataUtils.save(this.settings.notificationSounds, this, "notificationSounds");
 					this.SettingsUpdated = true;
@@ -686,14 +684,14 @@ module.exports = (_ => {
 												className: `input-${key}src`,
 												type: "file",
 												filter: ["audio", "video"],
-												useFilePath: true,
-												placeholder: "Url or File Path",
-												value: this.settings.notificationSounds[key].url
+												placeholder: "Url or File",
+												value: this.settings.notificationSounds[key].data
 											})
 										}),
 										BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Button, {
 											onClick: _ => {
-												let source = settingsPanel.props._node.querySelector(`.input-${key}src ` + BDFDB.dotCN.input).value.trim();
+												let source = settingsPanel.props._node.querySelector(`.input-${key}src ` + BDFDB.dotCN.input);
+												let value = source && (source.getAttribute("file") || source.value).trim()
 												if (!source.length) {
 													BDFDB.NotificationUtils.toast(`Sound File was removed.`, {type: "warning"});
 													successSavedAudio(key, source, source);
@@ -702,16 +700,13 @@ module.exports = (_ => {
 													if (response) {
 														let type = response.headers["content-type"];
 														if (type && (type.indexOf("octet-stream") > -1 || type.indexOf("audio") > -1 || type.indexOf("video") > -1)) {
-															successSavedAudio(key, source, source);
+															successSavedAudio(key, source);
 															return;
 														}
 													}
 													BDFDB.NotificationUtils.toast("Use a valid direct Link to a Video or Audio Source, they usually end on something like .mp3, .mp4 or .wav", {type: "danger"});
 												});
-												else BDFDB.LibraryRequires.fs.readFile(source, "base64", (error, body) => {
-													if (error) BDFDB.NotificationUtils.toast("Could not fetch File, please make sure the File exists", {type: "danger"});
-													else successSavedAudio(key, source, `data:audio/mpeg;base64,${body}`);
-												});
+												else if (source.indexOf("data:") == 0) return successSavedAudio(key, source);
 											},
 											children: BDFDB.LanguageUtils.LanguageStrings.SAVE
 										})
@@ -950,6 +945,8 @@ module.exports = (_ => {
 											audio.src = notificationSound.song;
 											audio.play();
 											BdApi.UI.alert("Hello World", <div>This is just a basic informational modal!</div>);
+										}
+									}
 								});
 							}
 						}
