@@ -1,3 +1,7 @@
+/**
+ * @name Discorda
+ * @author me
+ */
 function MySearchInput(props) {
     return <input
                 type="text"
