@@ -5,7 +5,7 @@ from plyer import notification
 # Replace with your bot's token
 TOKEN = input ("Token:")
 # Replace with the ID of the user you want to track
-USER_ID = Korra122
+USER_ID = "Korra122"
 
 class MyClient(discord.Client):
     def __init__(self, **kwargs):
