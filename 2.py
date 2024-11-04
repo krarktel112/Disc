@@ -1,7 +1,7 @@
 import discord
 
 user_id = "450867169581072394"
-YOUR_BOT_TOKEN = input("Token:")
+TOKEN = input("Token:")
 
 async def fetch_user_info(bot, user_id):
     user = await bot.fetch_user(user_id)
@@ -16,4 +16,4 @@ bot = discord.Client(intents=intents)
 async def on_ready():
     await fetch_user_info(bot, user_id)  # Replace with actual user ID
 
-bot.run(YOUR_BOT_TOKEN)
+bot.run(TOKEN)
