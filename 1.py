@@ -26,7 +26,7 @@ class MyClient(discord.Client):
         member = await self.fetch_user(USER_ID)
         if member is not None:
             if self.first_check:
-                print(f'Checking status for {member.name}: {member.presence}')
+                print(f'Checking status for {member.name}')
                 self.first_check = False
             if member.status == discord.Status.online:
                 self.send_notification(f'{member.name} is now online!')
