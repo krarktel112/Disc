@@ -17,6 +17,8 @@ async def user_status(ctx, user_id: int):
     except discord.NotFound:
         await ctx.send("User not found.")
 intents = discord.Intents.default()
+intents.members = True
+intents.presences = True
 bot = discord.Client(intents=intents)
 
 @bot.event
