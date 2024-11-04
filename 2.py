@@ -16,7 +16,7 @@ bot = discord.Client(intents=intents)
 async def on_ready():
     await fetch_user_info(bot, user_id)  # Replace with actual user ID
 async def on_member_update(self, before, after):
-    if before.id == USER_ID:
+    if before.id == user_id:
         if before.status != discord.Status.online and after.status == discord.Status.online:
             self.send_notification(f'{after.name} has come online!')
             print(f'{after.name} is now Online! Press Enter to exit')
