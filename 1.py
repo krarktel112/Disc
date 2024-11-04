@@ -5,7 +5,7 @@ from plyer import notification
 # Replace with your bot's token
 TOKEN = input ("Token:")
 # Replace with the ID of the user you want to track
-USER_ID = "Korra122"
+USER_ID = "450867169581072394"
 
 class MyClient(discord.Client):
     def __init__(self, **kwargs):
@@ -23,7 +23,7 @@ class MyClient(discord.Client):
 
     @tasks.loop(seconds=2)  # Check every minute
     async def check_status(self):
-        member = Guild.get_member(USER_ID)
+        member = await bot.fetch_user(USER_ID)
         if member is not None:
             if self.first_check:
                 print(f'Checking status for {member.name}: {member.status}')
