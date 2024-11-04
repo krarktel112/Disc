@@ -16,4 +16,4 @@ bot = discord.Client(intents=intents)
 async def on_ready():
     await fetch_user_info(bot, user_id)  # Replace with actual user ID
 
-bot.run("YOUR_BOT_TOKEN")
+bot.run(YOUR_BOT_TOKEN)
