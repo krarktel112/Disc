@@ -9,9 +9,9 @@ async def fetch_user_info(bot, user_id):
     print(f"User: {user.name}#{user.discriminator}")
     print(f"ID: {user.id}")
     print(f"Bot: {user.bot}")
-    attributes = dir(user)
+    attributes = dir(user2)
     print(attributes)
-    
+    bot.quit()
 intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
