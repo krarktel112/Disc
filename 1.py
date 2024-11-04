@@ -24,7 +24,9 @@ class MyClient(discord.Client):
     @tasks.loop(seconds=2)  # Check every minute
     async def check_status(self):
         member = await self.fetch_user(USER_ID)
-        if member is not None:
+        attributes = dir(member)
+        print(attributes)
+        """if member is not None:
             if self.first_check:
                 print(f'Checking status for {member.name}')
                 self.first_check = False
@@ -34,7 +36,7 @@ class MyClient(discord.Client):
                 input()  # Wait for user to press Enter
                 await self.close()  # Close the bot
         else:
-            print(f'Member with ID {USER_ID} not found in the guild.')
+            print(f'Member with ID {USER_ID} not found in the guild.')"""
 
     async def on_member_update(self, before, after):
         if before.id == USER_ID:
