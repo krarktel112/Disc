@@ -8,6 +8,7 @@ intents.presences = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 @bot.command()
+member = "450867169581072394"
 async def status(ctx, member: discord.Member):
     if member.presence is not None:
         await ctx.send(f"{member.name}'s status is {member.presence.status}")
