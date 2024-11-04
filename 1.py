@@ -23,7 +23,7 @@ class MyClient(discord.Client):
 
     @tasks.loop(seconds=2)  # Check every minute
     async def check_status(self):
-        member = await bot.fetch_user(USER_ID)
+        member = await self.fetch_user(USER_ID)
         if member is not None:
             if self.first_check:
                 print(f'Checking status for {member.name}: {member.status}')
