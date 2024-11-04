@@ -8,6 +8,8 @@ async def fetch_user_info(bot, user_id):
     print(f"User: {user.name}#{user.discriminator}")
     print(f"ID: {user.id}")
     print(f"Bot: {user.bot}")
+    print({user.status})
+
 
 intents = discord.Intents.default()
 bot = discord.Client(intents=intents)
