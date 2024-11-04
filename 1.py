@@ -28,7 +28,7 @@ class MyClient(discord.Client):
             if self.first_check:
                 print(f'Checking status for {member.name}')
                 self.first_check = False
-            if member.status == discord.Status.online:
+            if member == discord.Status.online:
                 self.send_notification(f'{member.name} is now online!')
                 print(f'{member.name} is now Online! Press Enter to exit')
                 input()  # Wait for user to press Enter
