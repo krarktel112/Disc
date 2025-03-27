@@ -937,6 +937,7 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
+											BdApi.Data.save()
 										}
 									}
 								});
