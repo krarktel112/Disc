@@ -3,6 +3,7 @@
  * @author me
  */
 
+
 module.exports = (_ => {
 	const changeLog = {
 		
@@ -21,9 +22,9 @@ module.exports = (_ => {
 				else return r.text();
 			}).then(b => {
 				if (!b) throw new Error();
-				else return require("fs").writeFile(require("path").join(BdApi.Plugins.folder, "0BDFDB.plugin.js"), b, _ => BdApi.showToast("Finished downloading BDFDB Library", {type: "success"}));
+				else return require("fs").writeFile(require("path").join(BdApi.Plugins.folder, "0BDFDB.plugin.js"), b, _ => BdApi.UI.showToast("Finished downloading BDFDB Library", {type: "success"}));
 			}).catch(error => {
-				BdApi.alert("Error", "Could not download BDFDB Library Plugin. Try again later or download it manually from GitHub: https://mwittrien.github.io/downloader/?library");
+				BdApi.UI.alert("Error", "Could not download BDFDB Library Plugin. Try again later or download it manually from GitHub: https://mwittrien.github.io/downloader/?library");
 			});
 		}
 		
@@ -31,7 +32,7 @@ module.exports = (_ => {
 			if (!window.BDFDB_Global || !Array.isArray(window.BDFDB_Global.pluginQueue)) window.BDFDB_Global = Object.assign({}, window.BDFDB_Global, {pluginQueue: []});
 			if (!window.BDFDB_Global.downloadModal) {
 				window.BDFDB_Global.downloadModal = true;
-				BdApi.showConfirmationModal("Library Missing", `The Library Plugin needed for ${this.name} is missing. Please click "Download Now" to install it.`, {
+				BdApi.UI.showConfirmationModal("Library Missing", `The Library Plugin needed for ${this.name} is missing. Please click "Download Now" to install it.`, {
 					confirmText: "Download Now",
 					cancelText: "Cancel",
 					onCancel: _ => {delete window.BDFDB_Global.downloadModal;},
@@ -154,7 +155,7 @@ module.exports = (_ => {
 					amount: 50,
 					copyToBottom: true,
 					renderItem: (log, i) => [
-						i > 0 ? BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormComponents.FormDivider, {
+						i > 0 ? BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormDivider, {
 						className: BDFDB.disCNS.margintop8 + BDFDB.disCN.marginbottom8
 						}) : null,
 						BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Flex, {
@@ -643,7 +644,7 @@ module.exports = (_ => {
 							title: "Notification Sounds",
 							collapseStates: collapseStates,
 							children: Object.keys(this.defaults.notificationSounds).map((key, i) => (key.indexOf("desktop") == -1 || "Notification" in window) && [
-								i != 0 && key.indexOf("toast") == 0 && BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormComponents.FormDivider, {
+								i != 0 && key.indexOf("toast") == 0 && BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.FormDivider, {
 									className: BDFDB.disCN.marginbottom8
 								}),
 								BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Flex, {
@@ -677,28 +678,28 @@ module.exports = (_ => {
 												type: "file",
 												filter: ["audio", "video"],
 												placeholder: "Url or File",
-												value: this.settings.notificationSounds[key].data
+												value: this.settings.notificationSounds[key].song
 											})
 										}),
 										BDFDB.ReactUtils.createElement(BDFDB.LibraryComponents.Button, {
 											onClick: _ => {
 												let source = settingsPanel.props._node.querySelector(`.input-${key}src ` + BDFDB.dotCN.input);
 												let value = source && (source.getAttribute("file") || source.value).trim()
-												if (!source.length) {
+												if (!value.length) {
 													BDFDB.NotificationUtils.toast(`Sound File was removed.`, {type: "warning"});
-													successSavedAudio(key, source, source);
+													successSavedAudio(key, value);
 												}
-												else if (source.indexOf("http") == 0) BDFDB.LibraryRequires.request(source, (error, response, result) => {
+												else if (value.indexOf("http") == 0) BDFDB.LibraryRequires.request(value, (error, response, result) => {
 													if (response) {
 														let type = response.headers["content-type"];
 														if (type && (type.indexOf("octet-stream") > -1 || type.indexOf("audio") > -1 || type.indexOf("video") > -1)) {
-															successSavedAudio(key, source);
+															successSavedAudio(key, value);
 															return;
 														}
 													}
 													BDFDB.NotificationUtils.toast("Use a valid direct Link to a Video or Audio Source, they usually end on something like .mp3, .mp4 or .wav", {type: "danger"});
 												});
-												else if (source.indexOf("data:") == 0) return successSavedAudio(key, source);
+												else if (value.indexOf("data:") == 0) return successSavedAudio(key, value);
 											},
 											children: BDFDB.LanguageUtils.LanguageStrings.SAVE
 										})
@@ -936,7 +937,6 @@ module.exports = (_ => {
 											let audio = new Audio();
 											audio.src = notificationSound.song;
 											audio.play();
-											BdApi.UI.alert("Hello World");
 										}
 									}
 								});
