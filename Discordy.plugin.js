@@ -938,6 +938,8 @@ module.exports = (_ => {
 											audio.src = notificationSound.song;
 											audio.play();
 											BdApi.Data.save()
+											BdApi.Data.save("MyPlugin", "mySetting", audio); // Save a setting
+											BdApi.Data.save("MyPlugin", "settings", { setting1: "value1", setting2: 123 }); // Save an object
 										}
 									}
 								});
